@@ -39,6 +39,8 @@ urlpatterns = [
     
     
     path('bulk/', createBulkReceiver),
+
+    path('send_email_to_receiver/<int:receiver_id>/<int:sender_id>/', sendEmailToReceiver),
     
 
 ]

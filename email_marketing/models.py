@@ -1,15 +1,18 @@
 from django.db import models
+from django.core.mail import send_mail
+
 
 # Create your models here.
 
 class Sender(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
-    EMAIL_BACKEND = models.CharField(max_length=300)
-    EMAIL_USE_TLS = models.BooleanField(default=True)
+    EMAIL_BACKEND = models.CharField(max_length=300, blank=True, null=True)
+    EMAIL_USE_TLS = models.BooleanField(null=True, blank=True)
     EMAIL_HOST = models.CharField(max_length=255)
     EMAIL_PORT = models.IntegerField()
     EMAIL_HOST_USER = models.CharField(max_length=255)
     EMAIL_HOST_PASSWORD = models.TextField()
+
     
     
     
@@ -23,6 +26,7 @@ class Receiver(models.Model):
     name = models.CharField(max_length=255, null=True, blank=True)
     phone = models.TextField(null=True, blank=True)
     address = models.TextField(null=True, blank=True)
+    email_sent = models.BooleanField(default=False)
     
 
 class ReceiverCategory(models.Model):
